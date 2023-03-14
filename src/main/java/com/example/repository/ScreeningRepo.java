@@ -9,4 +9,5 @@ import java.util.Scanner;
 
 @Repository
 public interface ScreeningRepo extends JpaRepository<Screening,Integer> {
+
 }

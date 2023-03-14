@@ -1,5 +1,7 @@
 package com.example.entity;
 
+import com.example.enums.State;
+import com.example.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,5 +19,7 @@ public class Ticket {
     private Integer id;
     private Integer seatNumber;
     private BigDecimal price;
+    private State state;
+    private Status status;
 
 }

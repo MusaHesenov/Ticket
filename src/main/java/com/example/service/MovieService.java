@@ -1,10 +1,12 @@
 package com.example.service;
 
+import com.example.dto.MovieDto;
 import com.example.entity.Movie;
 import com.example.repository.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -28,11 +30,21 @@ public class MovieService {
         return movieRepo.saveAll(movies);
     }
 
-    public Movie getByTitle(String title){
+    public Movie getByTitle(String title) {
         return movieRepo.findByTitle(title);
     }
 
-    public Movie getByGenre(String genre){
+    public Movie getByGenre(String genre) {
         return movieRepo.findByGenre(genre);
+    }
+
+    public List<MovieDto> getMovies() {
+        List<Movie> movies = movieRepo.findAll();
+        List<MovieDto> movieDtos = new ArrayList<>();
+        for (Movie movie : movies) {
+            movieDtos.add(DtoService.moviesDto(movie));
+        }
+
+        return movieDtos;
     }
 }
